@@ -6,19 +6,17 @@
 /*   By: mrossett <mrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:04:29 by mrossett          #+#    #+#             */
-/*   Updated: 2024/03/20 10:12:33 by mrossett         ###   ########.fr       */
+/*   Updated: 2024/03/20 11:25:07 by mrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_zero(size_t p, int i)
+int	ft_zero(size_t p, int i)
 {
 	if (p == 0)
-	{
 		ft_printchar((char)p, i);
-		return (i);
-	}
+	return (i);
 }
 
 int	ft_printpoint(size_t p, int i, char *hex)
