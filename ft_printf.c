@@ -6,7 +6,7 @@
 /*   By: mrossett <mrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:50:33 by mrossett          #+#    #+#             */
-/*   Updated: 2024/03/20 11:20:01 by mrossett         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:53:43 by mrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	ft_sign(const char *str, int i, va_list args)
 		i += ft_printesadecimal(va_arg(args, size_t), i,
 				"0123456789abcdef");
 	else if (*str == 'X')
-		i += ft_printbigesadecimal(va_arg(args, size_t), i,
+		i += ft_printesadecimal(va_arg(args, size_t), i,
 				"0123456789ABCDEF");
 	else if (*str == '%')
-		i += ft_printchar(va_arg(args, int), i);
+		i += ft_printchar('%', i);
 }
 
 int	ft_printf(const char *str, ...)

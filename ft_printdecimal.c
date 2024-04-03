@@ -6,7 +6,7 @@
 /*   By: mrossett <mrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:39:21 by mrossett          #+#    #+#             */
-/*   Updated: 2024/03/20 09:52:30 by mrossett         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:29:30 by mrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	ft_printdecimal(int n, int i)
 {
 	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", 11);
-		return (11);
-	}
+		return (ft_printstr("-2147483648", 11));
 	if (n < 0)
 	{
 		ft_printchar(45, i);
