@@ -6,7 +6,7 @@
 #    By: mrossett <mrossett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 15:46:11 by mrossett          #+#    #+#              #
-#    Updated: 2024/04/03 13:00:22 by mrossett         ###   ########.fr        #
+#    Updated: 2024/04/04 14:43:43 by mrossett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CC = 		gcc
 RM = 		rm -f
 FLAGS = 	-Wall -Wextra -Werror -I.
 
-NAME = 		lftprintf.a
+NAME = 		libftprintf.a
 
 all:		$(NAME)
 
@@ -34,7 +34,7 @@ clean:
 fclean:		clean
 			$(RM) $(NAME)
 
-re:			fclean $(NAME)
+re:			clean $(NAME)
 
 .PHONY:		all, clean, fclean, re
 

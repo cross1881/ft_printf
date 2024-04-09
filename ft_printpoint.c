@@ -6,22 +6,23 @@
 /*   By: mrossett <mrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:04:29 by mrossett          #+#    #+#             */
-/*   Updated: 2024/04/03 15:59:38 by mrossett         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:04:54 by mrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printpoint(size_t p, int i, char *hex)
+int	ft_printpoint(size_t p, char *hex)
 {
-	char	x[8];
+	int		i;
 	int		j;
+	char	x[8];
 
-	j = 2;
-	ft_printchar('0', i);
-	ft_printchar('x', i);
+	i = 2;
+	j = 0;
 	if (p == 0)
-		return(ft_printchar('0', i));
+		return (ft_printstr("(nil)"));
+	ft_printstr("0x");
 	while (p != 0)
 	{
 		x[j] = hex[p % 16];
@@ -30,8 +31,9 @@ int	ft_printpoint(size_t p, int i, char *hex)
 	}
 	while (j)
 	{
-		ft_printchar(x[j], i);
 		j--;
+		ft_printchar(x[j]);
+		i++;
 	}
 	return (i);
 }
