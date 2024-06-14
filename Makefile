@@ -6,15 +6,13 @@
 #    By: mrossett <mrossett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 15:46:11 by mrossett          #+#    #+#              #
-#    Updated: 2024/04/04 14:43:43 by mrossett         ###   ########.fr        #
+#    Updated: 2024/05/28 21:43:37 by mrossett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-
 SRC = 		ft_printf.c ft_printchar.c ft_printstr.c ft_printpoint.c \
-			ft_printdecimal.c ft_printesadecimal.c \
-			ft_printunsigned.c ft_strlen.c
+			ft_printdecimal.c ft_printundecimal.c ft_strlen.c		
 
 OBJ = 		$(SRC:.c=.o)
 CC = 		gcc
@@ -23,10 +21,10 @@ FLAGS = 	-Wall -Wextra -Werror -I.
 
 NAME = 		libftprintf.a
 
-all:		$(NAME)
-
 $(NAME):	${OBJ}
 			ar rcs $(NAME) $(OBJ)
+			
+all:		$(NAME)
 
 clean:
 			$(RM) $(OBJ) 
@@ -34,7 +32,7 @@ clean:
 fclean:		clean
 			$(RM) $(NAME)
 
-re:			clean $(NAME)
+re:			fclean all
 
 .PHONY:		all, clean, fclean, re
 

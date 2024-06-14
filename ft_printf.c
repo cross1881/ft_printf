@@ -6,52 +6,58 @@
 /*   By: mrossett <mrossett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:50:33 by mrossett          #+#    #+#             */
-/*   Updated: 2024/04/05 17:53:29 by mrossett         ###   ########.fr       */
+/*   Updated: 2024/05/29 02:32:36 by mrossett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_sign(const char *str, int *i, va_list args)
+int	ft_sign(int i, const char *str, va_list argc)
 {
-	if (*str == 'c')
-		return (ft_printchar(va_arg(args, int)));
-	else if (*str == 's')
-		return (ft_printstr(va_arg(args, char *)));
-	else if (*str == 'p')
-		return (ft_printpoint(va_arg(args, size_t), "0123456789abcdef"));
-	else if (*str == 'd' || *str == 'i')
-		return (ft_printdecimal(va_arg(args, int)));
-	else if (*str == 'u')
-		return (ft_printunsigned(va_arg(args, unsigned int)));
-	else if (*str == 'x')
-		return (ft_printesadecimal(va_arg(args, size_t), "0123456789abcdef"));
-	else if (*str == 'X')
-		return (ft_printesadecimal(va_arg(args, size_t), "0123456789ABCDEF"));
-	else if (*str == '%')
-		return (ft_printchar('%'));
+	int	j;
+
+	j = 0;
+	if (str[i] == 'c')
+		j += ft_printchar(va_arg(argc, int));
+	if (str[i] == 's')
+		j += ft_printstr(va_arg(argc, char *));
+	if (str[i] == 'p')
+		j += ft_point(va_arg(argc, unsigned long), "0123456789abcdef");
+	if (str[i] == 'd' || str[i] == 'i')
+		j += ft_printdecimal(va_arg(argc, int));
+	if (str[i] == 'u')
+		j += ft_printundecimal(va_arg(argc, unsigned int));
+	if (str[i] == 'x')
+		j += ft_printpoint(va_arg(argc, unsigned int), "0123456789abcdef");
+	if (str[i] == 'X')
+		j += ft_printpoint(va_arg(argc, unsigned int), "0123456789ABCDEF");
+	if (str[i] == '%')
+		j += ft_printchar('%');
+	return (j);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	va_list	args;
 	int		i;
-	int		count;
+	int		j;
+	va_list	argc;
 
 	i = 0;
-	count = 0;
-	va_start(args, str);
-	while (*str)
+	j = 0;
+	va_start(argc, str);
+	if (!str[i])
+		return (0);
+	while (str[i])
 	{
-		if (*str == '%')
+		if (str[i] == '%')
 		{
-			str++;
-			count += ft_sign(str, &i, args);
+			j += ft_sign(i + 1, str, argc);
+			i++;
 		}
 		else
-			count += ft_printchar(*str);
-		str++;
+			j += ft_printchar(str[i]);
+		i++;
 	}
-	va_end(args);
-	return (count);
+	va_end(argc);
+	return (j);
 }
